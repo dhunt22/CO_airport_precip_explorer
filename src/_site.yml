@@ -1,0 +1,13 @@
+name: "580A9 CO_airport_precip_explorer"
+author: "Devin Hunt"
+output_dir: "docs"
+# output:
+#   html_document:
+#     self_contained: no
+navbar:
+  title: "Colorado Airport Precipitation Exploration"
+  left:
+  - text: "Data Download and Processing"
+    href: 00_download_clean.html
+  - text: "Data Visualization and Interpretation"
+    href: 01_data_visualization.html

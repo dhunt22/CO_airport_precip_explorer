@@ -1,0 +1,66 @@
+---
+title: "Chapter 00"
+author: "Devin Hunt"
+date: "3/23/2022"
+output: 
+  html_document:
+    theme: cerulean
+---
+
+```{r download-packages, include=FALSE}
+library(riem)
+library(tidyverse)
+library(USAboundaries)
+library(sf)
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "../")
+knitr::opts_knit$set(output_dir = "../docs")
+```
+
+## Accessing Riem Network
+
+```{r, message = F, warning = F}
+network <- riem_networks()
+co_stations <- riem_stations(network = 'CO_ASOS') %>%
+  st_as_sf(., coords = c('lon','lat'), crs = 4326)
+glimpse(co_stations)
+
+save(co_stations, file = "data/in/co_stations.Rdata")
+
+```
+
+
+## Download some state boundary data
+
+
+```{r, message = F, warning = F}
+co <- USAboundaries::us_counties(states = 'Colorado')
+#co_elev <- elevatr::get_elev_raster(co_stations,
+#                                   z = 9)
+```
+
+## Download a single site data
+
+
+```{r, message = F, warning = F}
+# Filter for just the Northern CO regional Airport
+fnl <- riem_measures(station = 'FNL',
+                   date_start = '1987-05-01',
+                   date_end = '1992-11-01') %>%
+  st_as_sf(., coords = c('lon','lat'), crs = 4326)
+
+save(fnl, file = "data/in/fnl_station.Rdata")
+
+# Remove duplicated "state_names" column
+co_manip <- co[, !duplicated(colnames(co), fromLast = TRUE)]
+
+save(co_manip, file = "data/in/colorado_boundaries.Rdata")
+
+# Filter the desired mapping counties
+fnl_counties <- co_manip %>% 
+  filter(name %in% c("Larimer", "Weld", "Boulder"))
+
+save(fnl_counties, file = "data/in/fnl_counties.Rdata")
+
+```
+

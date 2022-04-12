@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Devin Hunt" />
+
+
+<title>Chapter 00</title>
+
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Colorado Airport Precipitation Exploration</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="00_download_clean.html">Data Download and Processing</a>
+</li>
+<li>
+  <a href="01_data_visualization.html">Data Visualization and Interpretation</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Chapter 00</h1>
+<h4 class="author">Devin Hunt</h4>
+<h4 class="date">3/23/2022</h4>
+
+</div>
+
+
+<div id="accessing-riem-network" class="section level2">
+<h2>Accessing Riem Network</h2>
+<pre class="r"><code>network &lt;- riem_networks()
+co_stations &lt;- riem_stations(network = &#39;CO_ASOS&#39;) %&gt;%
+  st_as_sf(., coords = c(&#39;lon&#39;,&#39;lat&#39;), crs = 4326)
+glimpse(co_stations)</code></pre>
+<pre><code>## Rows: 73
+## Columns: 27
+## $ index         &lt;int&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16~
+## $ id            &lt;chr&gt; &quot;AFF&quot;, &quot;AKO&quot;, &quot;ALS&quot;, &quot;ASE&quot;, &quot;0CO&quot;, &quot;BDU&quot;, &quot;BJC&quot;, &quot;BKF&quot;, ~
+## $ synop         &lt;dbl&gt; 93065, 24015, 23061, 93073, 419, 160, 3065, 23036, 3064,~
+## $ name          &lt;chr&gt; &quot;AIR FORCE ACADEMY&quot;, &quot;AKRON/WASHINGTON CO&quot;, &quot;ALAMOSA MUN~
+## $ state         &lt;chr&gt; &quot;CO&quot;, &quot;CO&quot;, &quot;CO&quot;, &quot;CO&quot;, &quot;CO&quot;, &quot;CO&quot;, &quot;CO&quot;, &quot;CO&quot;, &quot;CO&quot;, &quot;C~
+## $ country       &lt;chr&gt; &quot;US&quot;, &quot;US&quot;, &quot;US&quot;, &quot;US&quot;, &quot;US&quot;, &quot;US&quot;, &quot;US&quot;, &quot;US&quot;, &quot;US&quot;, &quot;U~
+## $ elevation     &lt;dbl&gt; 2003.000, 1431.000, 2299.000, 2382.000, 3792.000, 1612.0~
+## $ network       &lt;chr&gt; &quot;CO_ASOS&quot;, &quot;CO_ASOS&quot;, &quot;CO_ASOS&quot;, &quot;CO_ASOS&quot;, &quot;CO_ASOS&quot;, &quot;~
+## $ online        &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TR~
+## $ county        &lt;chr&gt; &quot;El Paso&quot;, &quot;Washington&quot;, &quot;Alamosa&quot;, &quot;Gunnison&quot;, &quot;Clear C~
+## $ climate_site  &lt;chr&gt; &quot;COTCOS&quot;, &quot;CO0114&quot;, &quot;CO0130&quot;, &quot;CO1959&quot;, &quot;CO1186&quot;, &quot;CO084~
+## $ wfo           &lt;chr&gt; &quot;PUB&quot;, &quot;BOU&quot;, &quot;PUB&quot;, &quot;GJT&quot;, &quot;BOU&quot;, &quot;BOU&quot;, &quot;BOU&quot;, &quot;BOU&quot;, ~
+## $ modified      &lt;chr&gt; &quot;2021-05-05T10:48:22Z&quot;, &quot;2021-05-05T10:48:22Z&quot;, &quot;2021-05~
+## $ spri          &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ tzname        &lt;chr&gt; &quot;America/Denver&quot;, &quot;America/Denver&quot;, &quot;America/Denver&quot;, &quot;A~
+## $ iemid         &lt;int&gt; 34687, 34688, 34689, 9415, 22652, 22664, 9436, 21855, 90~
+## $ archive_begin &lt;chr&gt; &quot;1967-11-27T00:00:00Z&quot;, &quot;1948-01-01T00:00:00Z&quot;, &quot;1948-01~
+## $ metasite      &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, ~
+## $ ugc_county    &lt;chr&gt; &quot;COC041&quot;, &quot;COC121&quot;, &quot;COC003&quot;, &quot;COC097&quot;, &quot;COC019&quot;, &quot;COC01~
+## $ ugc_zone      &lt;chr&gt; &quot;COZ226&quot;, &quot;COZ249&quot;, &quot;COZ070&quot;, &quot;COZ203&quot;, &quot;COZ034&quot;, &quot;COZ23~
+## $ ncdc81        &lt;chr&gt; &quot;USC00055734&quot;, &quot;USW00024015&quot;, &quot;USW00023061&quot;, &quot;USW0009307~
+## $ ncei91        &lt;chr&gt; &quot;USC00050756&quot;, &quot;USW00024015&quot;, &quot;USW00023061&quot;, &quot;USW0009307~
+## $ longitude     &lt;dbl&gt; -104.8128, -103.2220, -105.8614, -106.8689, -105.7639, -~
+## $ latitude      &lt;dbl&gt; 38.96972, 40.17563, 37.43889, 39.22317, 39.79388, 40.039~
+## $ plot_name     &lt;chr&gt; NA, NA, NA, NA, &quot;Bethoud Pass&quot;, &quot;Boulder&quot;, NA, NA, &quot;BUEN~
+## $ archive_end   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ~
+## $ geometry      &lt;POINT [°]&gt; POINT (-104.8128 38.96972), POINT (-103.222 40.175~</code></pre>
+<pre class="r"><code>save(co_stations, file = &quot;data/in/co_stations.Rdata&quot;)</code></pre>
+</div>
+<div id="download-some-state-boundary-data" class="section level2">
+<h2>Download some state boundary data</h2>
+<pre class="r"><code>co &lt;- USAboundaries::us_counties(states = &#39;Colorado&#39;)
+#co_elev &lt;- elevatr::get_elev_raster(co_stations,
+#                                   z = 9)</code></pre>
+</div>
+<div id="download-a-single-site-data" class="section level2">
+<h2>Download a single site data</h2>
+<pre class="r"><code># Filter for just the Northern CO regional Airport
+fnl &lt;- riem_measures(station = &#39;FNL&#39;,
+                   date_start = &#39;1987-05-01&#39;,
+                   date_end = &#39;1992-11-01&#39;) %&gt;%
+  st_as_sf(., coords = c(&#39;lon&#39;,&#39;lat&#39;), crs = 4326)
+
+save(fnl, file = &quot;data/in/fnl_station.Rdata&quot;)
+
+# Remove duplicated &quot;state_names&quot; column
+co_manip &lt;- co[, !duplicated(colnames(co), fromLast = TRUE)]
+
+save(co_manip, file = &quot;data/in/colorado_boundaries.Rdata&quot;)
+
+# Filter the desired mapping counties
+fnl_counties &lt;- co_manip %&gt;% 
+  filter(name %in% c(&quot;Larimer&quot;, &quot;Weld&quot;, &quot;Boulder&quot;))
+
+save(fnl_counties, file = &quot;data/in/fnl_counties.Rdata&quot;)</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

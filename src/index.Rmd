@@ -1,0 +1,26 @@
+---
+title: "Index"
+author: "Devin Hunt"
+date: "4/11/2022"
+output: 
+  html_document:
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+save_dir <- file.path(getwd(), "docs")
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "../")
+knitr::opts_knit$set(output_dir = save_dir)
+```
+
+# Purpose
+
+In this report, I will be exploring the precipitation at Northern Colorado Regional Airport. 
+The data will be pulled from the ASOS station using the riem databases.
+
+For this project, we want to organize our repository in a professional manner. A breakdown of this repository can be found in READMe.md.
+
+## Credits
+Initial project was inspired by Dr. Matt Ross of Colorado State University, who leads Intro to Environmental Data Science Applications: Water Resources.
